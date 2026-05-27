@@ -1,0 +1,18 @@
+export default {
+	semi: true,
+	singleQuote: true,
+	useTabs: true,
+	tabWidth: 2,
+	trailingComma: 'all',
+	printWidth: 100,
+	bracketSpacing: true,
+	arrowParens: 'always',
+	endOfLine: 'lf',
+	jsxSingleQuote: false,
+	bracketSameLine: false,
+	singleAttributePerLine: true,
+	htmlWhitespaceSensitivity: 'strict',
+	objectWrap: 'preserve',
+	plugins: ['prettier-plugin-multiline-arrays'],
+	multilineArraysWrapThreshold: 1,
+};

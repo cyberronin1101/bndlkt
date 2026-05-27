@@ -1,0 +1,33 @@
+{
+	"exclude": [
+		"node_modules",
+		"dist",
+		"tmp"
+	],
+	// ========== Target Environment ==========
+	"compilerOptions": {
+		"target": "ES2022", // Modern JS for Node 18+ and modern browsers
+		"module": "ESNext", // Modern ECMAScript modules syntax
+		"noEmit": true, // Type checking only, do not emit compiled files
+		"moduleResolution": "bundler", // Support for conditional exports and extensionless imports
+
+		// ========== Strictness & Quality Gates ==========
+		"strict": true, // Enable all strict type-checking options
+		"exactOptionalPropertyTypes": true, // Enforce strict type matches for optional properties
+		"noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statements
+		"noImplicitOverride": true, // Ensure overridden members are explicitly marked with the override modifier
+		"noImplicitReturns": true, // Report error when not all code paths in function return a value
+		"noPropertyAccessFromIndexSignature": true, // Enforce using indexed access for keys not declared in object types
+		"noUncheckedIndexedAccess": true, // Add 'undefined' to any un-declared explicitly lookup inside index signatures
+		"noUnusedLocals": true, // Report errors on unused local variables
+		"noUnusedParameters": true, // Report errors on unused parameters
+		"allowUnreachableCode": false, // Disallow unreachable code
+		"allowUnusedLabels": false, // Disallow unused labels
+
+		// ========== Interoperability & Compatibility ==========
+		"esModuleInterop": true, // Simplify importing CommonJS modules via ESM syntax
+		"allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+		"resolveJsonModule": true, // Enable importing .json files directly
+		"skipLibCheck": true // Skip type checking of declaration files (.d.ts) inside node_modules
+	}
+}

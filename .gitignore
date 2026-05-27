@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build & Cache
+dist/
+build/
+*.tsbuildinfo
+.eslintcache
+.cache/
+
+# Logs & Environment
+*.log
+**/.env*
+!**/.env.example
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Temporary Files
+tmp/
+*.tmp
+*.temp
+
+# pnpm Package Manager
+.pnpm-store/
+pnpm-debug.log*

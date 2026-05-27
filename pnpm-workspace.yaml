@@ -1,0 +1,7 @@
+packages:
+  # Temporary workspace for Proof of Concept (MVP over MVP). To be deleted later.
+  - 'poc/*'
+  - 'packages/*'
+  - 'demo/*'
+allowBuilds:
+  unrs-resolver: true
