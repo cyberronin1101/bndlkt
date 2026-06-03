@@ -1,0 +1,15 @@
+[scope] type: message
+#
+# Scope:
+#   common, demo, admin, cli, core
+#   init, plugin, logger
+#
+# Types:
+#   feat(new), fix(bug), docs, style(format), refactor
+#   perf(speed), test, chore(deps/config), revert
+#
+# Examples:
+#   [admin] feat: add user list
+#   [common] chore: update eslint config
+#
+# Lines starting with '#' are ignored.

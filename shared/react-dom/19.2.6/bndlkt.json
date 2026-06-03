@@ -1,0 +1,9 @@
+{
+	"id": "react-dom@19.2.6",
+	"name": "react-dom",
+	"version": "19.2.6",
+	"externals": {
+		"react": "19.2.6"
+	},
+	"remotes": {}
+}

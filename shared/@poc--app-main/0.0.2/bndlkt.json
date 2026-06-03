@@ -1,0 +1,17 @@
+{
+	"id": "@poc/app-main@0.0.1",
+	"name": "@poc/app-main",
+	"version": "0.0.1",
+	"externals": {
+		"react": "^19.2.4",
+		"react-dom/client": "^19.2.2"
+	},
+	"env": {
+		"__SOME_VAR__": "string",
+		"_BOOL_": "boolean",
+		"API_TIMEOUT_MS": "number"
+	},
+	"remotes": {
+		"@poc/app-header": "^0.0.3"
+	}
+}

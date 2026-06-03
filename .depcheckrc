@@ -1,0 +1,19 @@
+{
+  "ignore-patterns": [
+    "dist",
+    "build",
+    ".cache",
+    "tmp",
+    "poc"
+  ],
+  "ignores": [
+    "@commitlint/cli",
+    "@types/node",
+    "depcheck",
+    "eslint-config-prettier",
+    "lint-staged",
+    "prettier",
+    "prettier-plugin-multiline-arrays",
+    "@bndlkt/*"
+  ]
+}
