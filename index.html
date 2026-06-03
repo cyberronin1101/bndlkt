@@ -16,6 +16,10 @@
       adminPanelUrl: './admin.html',
       url: '/api/scopes',
       onReady: () => {
+        if (window.location.hostname === 'cyberronin1101.github.io') {
+          window.bndlkt.basePath = '/bndlkt';
+        }
+
         window.bndlkt.bootstrap('/api/config');
       }
     });

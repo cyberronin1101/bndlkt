@@ -1,4 +1,5 @@
 window.bndlkt = {
+	basePath: '',
 	bundlesIndexMap: new Map(),
 	bundlesIdMap: new Map(),
 
@@ -126,7 +127,7 @@ window.bndlkt = {
 						files.map((file) => {
 							const baseUrlFixed = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
 							// todo currently only scripts
-							return this.injectScript(`${baseUrlFixed}${file}`);
+							return this.injectScript(`${this.basePath}${baseUrlFixed}${file}`);
 						}),
 					);
 				}
