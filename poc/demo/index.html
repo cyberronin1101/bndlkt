@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>app-main</title></head>
+<script src="./bndlktBar.js" async></script>
+<script src="./fakeApi.js" async></script>
+<script src="./bndlkt.js" async></script>
+<body>
+<script>
+  window.addEventListener('load', () => {
+
+    window.bndlktUi({
+      adminPanelUrl: './admin.html',
+      url: '/api/scopes',
+      onReady: () => {
+        window.bndlkt.bootstrap('/api/config');
+      }
+    });
+
+  });
+</script>
+<div id="root"></div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2022"
+		],
+		"types": [
+			"react",
+			"react-dom"
+		],
+		"jsx": "react-jsx"
+	},
+	"include": ["src/**/*"]
+}

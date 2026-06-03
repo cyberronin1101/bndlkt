@@ -14,10 +14,11 @@ import ts from 'typescript-eslint';
 export default [
 	{
 		ignores: [
+			'poc/demo/shared/',
 			'**/dist/',
 			'**/node_modules/',
 			'tmp/',
-			'poc/app-main/backet', //todo remove after poc
+			'demo/',
 		],
 	},
 
@@ -33,7 +34,9 @@ export default [
 			ecmaVersion: 'latest',
 			sourceType: 'module',
 			parserOptions: {
-				ecmaFeatures: { jsx: true },
+				ecmaFeatures: {
+					jsx: true,
+				},
 				tsconfigRootDir: import.meta.dirname,
 				projectService: true,
 			},
@@ -64,9 +67,18 @@ export default [
 		},
 		rules: {
 			// ----- TypeScript -----
-			...ts.configs.recommended.reduce((acc, config) => ({ ...acc, ...config.rules }), {}),
+			...ts.configs.recommended.reduce(
+				(acc, config) => ({
+					...acc,
+					...config.rules,
+				}),
+				{},
+			),
 			...ts.configs.recommendedTypeChecked.reduce(
-				(acc, config) => ({ ...acc, ...config.rules }),
+				(acc, config) => ({
+					...acc,
+					...config.rules,
+				}),
 				{},
 			),
 			'@typescript-eslint/no-explicit-any': 'error',
@@ -79,7 +91,10 @@ export default [
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'@typescript-eslint/no-unused-vars': [
 				'error',
-				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+				{
+					argsIgnorePattern: '^_',
+					varsIgnorePattern: '^_',
+				},
 			],
 			'@typescript-eslint/strict-boolean-expressions': [
 				'error',
@@ -101,7 +116,6 @@ export default [
 			'@typescript-eslint/no-unsafe-declaration-merging': 'error',
 
 			// ----- Additional Best Practices -----
-
 			'@typescript-eslint/no-unnecessary-condition': 'error',
 			'@typescript-eslint/explicit-function-return-type': [
 				'error',
@@ -115,7 +129,10 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
 			'@typescript-eslint/consistent-type-assertions': [
 				'error',
-				{ assertionStyle: 'as', objectLiteralTypeAssertions: 'never' },
+				{
+					assertionStyle: 'as',
+					objectLiteralTypeAssertions: 'never',
+				},
 			],
 			'@typescript-eslint/consistent-type-exports': 'error',
 			'@typescript-eslint/ban-ts-comment': [
@@ -131,7 +148,9 @@ export default [
 			'@typescript-eslint/prefer-ts-expect-error': 'error',
 			'@typescript-eslint/array-type': [
 				'error',
-				{ default: 'array' },
+				{
+					default: 'array',
+				},
 			], // Array<T>
 			'@typescript-eslint/prefer-readonly': 'error',
 			'@typescript-eslint/no-restricted-types': [
@@ -145,10 +164,6 @@ export default [
 						Number: 'Use the primitive type `number`.',
 						String: 'Use the primitive type `string`.',
 						Boolean: 'Use the primitive type `boolean`.',
-						'React.FC': 'Use explicit props type to avoid implicit `children`.',
-						'React.FunctionComponent': 'Use explicit props type to avoid implicit `children`.',
-						FC: 'Use explicit props type to avoid implicit `children`.',
-						FunctionComponent: 'Use explicit props type to avoid implicit `children`.',
 					},
 				},
 			],
@@ -188,21 +203,45 @@ export default [
 			'react-hooks/rules-of-hooks': 'error',
 			'react-hooks/exhaustive-deps': 'error',
 			'react/self-closing-comp': 'error',
+			'react/jsx-first-prop-new-line': [
+				'error',
+				'multiline',
+			],
+			'react/jsx-max-props-per-line': [
+				'error',
+				{
+					maximum: 1,
+					when: 'always',
+				},
+			],
+			'react/jsx-closing-bracket-location': [
+				'error',
+				'line-aligned',
+			],
 			'react/jsx-boolean-value': [
 				'error',
 				'never',
 			],
 			'react/function-component-definition': [
 				'error',
-				{ namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+				{
+					namedComponents: 'arrow-function',
+					unnamedComponents: 'arrow-function',
+				},
 			],
 			'react/jsx-curly-brace-presence': [
 				'error',
-				{ props: 'never', children: 'never', propElementValues: 'always' },
+				{
+					props: 'never',
+					children: 'never',
+					propElementValues: 'always',
+				},
 			],
 			'react-refresh/only-export-components': [
 				'error',
-				{ allowConstantExport: true },
+				{
+					allowConstantExport: true,
+				},
 			],
 			'react/jsx-no-leaked-render': [
 				'error',
@@ -215,17 +254,21 @@ export default [
 			],
 
 			// ----- Object and Array Formatting -----
-
 			'object-curly-newline': [
 				'error',
 				{
-					ObjectExpression: { multiline: true, minProperties: 1 },
+					ObjectExpression: {
+						multiline: true,
+						minProperties: 1,
+					},
 					ImportDeclaration: 'never',
 				},
 			],
 			'object-property-newline': [
 				'error',
-				{ allowAllPropertiesOnSameLine: false },
+				{
+					allowAllPropertiesOnSameLine: false,
+				},
 			],
 
 			// ----- Common ESLint -----
@@ -236,7 +279,9 @@ export default [
 			eqeqeq: [
 				'error',
 				'always',
-				{ null: 'ignore' },
+				{
+					null: 'ignore',
+				},
 			],
 			'object-shorthand': [
 				'error',
@@ -244,7 +289,9 @@ export default [
 			],
 			'no-else-return': [
 				'error',
-				{ allowElseIf: false },
+				{
+					allowElseIf: false,
+				},
 			],
 			curly: [
 				'error',
@@ -263,15 +310,32 @@ export default [
 				},
 			],
 
-			// ----- Naming Conventions -----
-			// todo check naming
-			// Enforces strict, consistent naming standards across the monorepo
 			'@typescript-eslint/naming-convention': [
 				'error',
-				// Standard fallback for everything: strictly camelCase
-				{ selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow' },
+				// 1. Default: everything camelCase, no underscores
+				{
+					selector: 'default',
+					format: ['camelCase'],
+					leadingUnderscore: 'forbid',
+				},
 
-				// Global or constant variables: allow camelCase or strict UPPER_CASE
+				// 2. Boolean variables – mandatory prefixes + PascalCase remainder
+				{
+					selector: 'variable',
+					types: ['boolean'],
+					format: ['PascalCase'],
+					prefix: [
+						'is',
+						'has',
+						'should',
+						'can',
+						'did',
+						'will',
+					],
+					leadingUnderscore: 'forbid',
+				},
+
+				// 3. Global constants: camelCase or UPPER_CASE
 				{
 					selector: 'variable',
 					modifiers: [
@@ -282,58 +346,126 @@ export default [
 						'camelCase',
 						'UPPER_CASE',
 					],
+					leadingUnderscore: 'forbid',
 				},
 
-				// Exported variables: allow PascalCase specifically for React arrow-function components
+				// 4. Function variables (arrow components, hooks, utilities)
+				{
+					selector: 'variable',
+					types: ['function'],
+					format: [
+						'camelCase',
+						'PascalCase',
+					],
+					leadingUnderscore: 'forbid',
+				},
+
+				// 5. Exported variables (non-functions) – camelCase or UPPER_CASE
 				{
 					selector: 'variable',
 					modifiers: ['exported'],
 					format: [
 						'camelCase',
 						'UPPER_CASE',
-						'PascalCase',
 					],
+					leadingUnderscore: 'forbid',
 				},
 
-				// Functions (standard declarations): camelCase for helpers, PascalCase for components
+				// 6. Named functions (function declaration) – camelCase or PascalCase
 				{
 					selector: 'function',
 					format: [
 						'camelCase',
 						'PascalCase',
 					],
+					leadingUnderscore: 'forbid',
 				},
 
-				// Types, Interfaces, and Enums: strictly PascalCase
-				{ selector: 'typeLike', format: ['PascalCase'] },
+				// 7. Types, interfaces, enums – PascalCase
+				{
+					selector: 'typeLike',
+					format: ['PascalCase'],
+				},
 
-				// Enum members: strictly UPPER_CASE
-				{ selector: 'enumMember', format: ['UPPER_CASE'] },
+				// 8. Generic type parameters – PascalCase with T prefix
+				{
+					selector: 'typeParameter',
+					format: ['PascalCase'],
+					prefix: ['T'],
+				},
 
-				// Object properties: disable strict checks for quoted keys to allow external API payloads,
-				// microfrontend manifests, and network headers (e.g., 'Content-Type', snake_case keys)
+				// 9. Enum members – UPPER_CASE
+				{
+					selector: 'enumMember',
+					format: ['UPPER_CASE'],
+				},
+
+				// 10. Boolean object properties – mandatory prefixes + PascalCase remainder
+				{
+					selector: 'property',
+					types: ['boolean'],
+					format: ['PascalCase'],
+					prefix: [
+						'is',
+						'has',
+						'should',
+						'can',
+						'did',
+						'will',
+					],
+					leadingUnderscore: 'forbid',
+				},
+
+				// 11. Private boolean properties – prefix + PascalCase remainder + underscore
+				{
+					selector: 'property',
+					modifiers: ['private'],
+					types: ['boolean'],
+					format: ['PascalCase'],
+					prefix: [
+						'is',
+						'has',
+						'should',
+						'can',
+						'did',
+						'will',
+					],
+					leadingUnderscore: 'require',
+				},
+
+				// 12. Unquoted object properties – camelCase or UPPER_CASE, no underscores
 				{
 					selector: 'property',
 					format: [
 						'camelCase',
 						'UPPER_CASE',
-						'snake_case',
 					],
-					leadingUnderscore: 'allow',
+					leadingUnderscore: 'forbid',
 				},
+
+				// 13. Quoted properties – no restrictions (external APIs)
 				{
 					selector: 'property',
 					modifiers: ['requiresQuotes'],
 					format: null,
 				},
 
-				// Private class properties and methods: require a leading underscore
+				// 14. Private properties – with underscore
 				{
 					selector: 'property',
 					modifiers: ['private'],
 					format: ['camelCase'],
 					leadingUnderscore: 'require',
 				},
+
+				// 15. Public methods – camelCase, no underscores
+				{
+					selector: 'method',
+					format: ['camelCase'],
+					leadingUnderscore: 'forbid',
+				},
+
+				// 16. Private methods – with underscore
 				{
 					selector: 'method',
 					modifiers: ['private'],
@@ -341,11 +473,36 @@ export default [
 					leadingUnderscore: 'require',
 				},
 
-				// Function parameters: camelCase only, allow leading underscore for unused ones (_param)
-				{ selector: 'parameter', format: ['camelCase'], leadingUnderscore: 'allow' },
+				// 17. Destructured parameters – unchecked (external names)
+				{
+					selector: 'parameter',
+					modifiers: ['destructured'],
+					format: null,
+				},
 
-				// Destructured variables: safely ignore formatting to match external API responses
-				{ selector: 'variable', modifiers: ['destructured'], format: null },
+				// 18. Regular function parameters – camelCase, _ allowed for unused
+				{
+					selector: 'parameter',
+					format: ['camelCase'],
+					leadingUnderscore: 'allow',
+				},
+
+				// 19. Destructured variables – unchecked (external keys)
+				{
+					selector: 'variable',
+					modifiers: ['destructured'],
+					format: null,
+				},
+
+				// 20. Imports – camelCase or PascalCase, _ allowed (lodash etc.)
+				{
+					selector: 'import',
+					format: [
+						'camelCase',
+						'PascalCase',
+					],
+					leadingUnderscore: 'allow',
+				},
 			],
 		},
 	},
@@ -355,6 +512,9 @@ export default [
 		files: [
 			'**/placeholder.ts',
 			'**/index.tsx',
+		],
+		ignores: [
+			'poc/demo',
 		],
 		rules: {
 			'no-restricted-syntax': [
@@ -372,14 +532,74 @@ export default [
 	// Overrides for configuration files
 	{
 		files: [
-			'**/vite.config.ts',
-			'**/tsup.config.ts',
-			'**/eslint.config.js',
-			'**/prettier.config.js',
-			'**/commitlint.config.сjs',
+			'**/*.js',
+			'**/*.cjs',
+			'**/*.mjs',
 		],
+		ignores: [
+			'**/*.ts',
+			'**/*.tsx',
+		],
+		languageOptions: {
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+			globals: {
+				...globals.browser,
+				...globals.node,
+			},
+		},
 		rules: {
+			'no-console': 'off',
+			'no-debugger': 'warn',
 			'import/no-default-export': 'off',
+
+			curly: [
+				'error',
+				'all',
+			],
+			'no-var': 'error',
+			'prefer-const': [
+				'error',
+				{
+					destructuring: 'all',
+					ignoreReadBeforeAssign: false,
+				},
+			],
+			eqeqeq: [
+				'error',
+				'always',
+				{
+					null: 'ignore',
+				},
+			],
+			'no-else-return': [
+				'error',
+				{
+					allowElseIf: false,
+				},
+			],
+			'object-shorthand': [
+				'error',
+				'always',
+			],
+			'no-alert': 'error',
+
+			'object-curly-newline': [
+				'error',
+				{
+					ObjectExpression: {
+						multiline: true,
+						minProperties: 1,
+					},
+					ImportDeclaration: 'never',
+				},
+			],
+			'object-property-newline': [
+				'error',
+				{
+					allowAllPropertiesOnSameLine: false,
+				},
+			],
 		},
 	},
 

@@ -4,11 +4,12 @@ export default {
 			rules: {
 				'bracketed-scope-required': (parsed) => {
 					const { header } = parsed;
-					if (!header)
+					if (!header) {
 						return [
 							false,
 							'Commit message cannot be empty',
 						];
+					}
 
 					// Allowed scopes
 					const allowedScopes = [
@@ -66,21 +67,24 @@ export default {
 						];
 					}
 
-					if (subject.trim() === '')
+					if (subject.trim() === '') {
 						return [
 							false,
 							'Subject cannot be empty',
 						];
-					if (/^[A-Z]/.test(subject))
+					}
+					if (/^[A-Z]/.test(subject)) {
 						return [
 							false,
 							'Subject must start with a lowercase letter',
 						];
-					if (/\.$/.test(subject))
+					}
+					if (/\.$/.test(subject)) {
 						return [
 							false,
 							'Subject must not end with a period',
 						];
+					}
 
 					return [true];
 				},
