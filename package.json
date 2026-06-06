@@ -11,7 +11,8 @@
 		"check:types": "pnpm -r check:types",
 		"check:lint": "eslint . --max-warnings 0",
 		"check:all": "pnpm run check:types && pnpm run check:lint",
-		"check:deps": "depcheck"
+		"check:deps": "depcheck",
+		"gh_pages": "gh-pages -d poc/demo"
 	},
 	"keywords": [
 		"microfrontends",
@@ -37,6 +38,7 @@
 		"eslint-plugin-react": "^7.37.5",
 		"eslint-plugin-react-hooks": "^7.1.1",
 		"eslint-plugin-react-refresh": "^0.5.2",
+		"gh-pages": "^6.3.0",
 		"globals": "^15.15.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.0.5",
